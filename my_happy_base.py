@@ -1,5 +1,5 @@
 def look_up_hbase(hbase_connection, hbase_conf, list_of_keys):
-    connection = hbase_connection.value
+    connection = hbase_connection
     table = connection.table(hbase_conf['table_name'])
 
     rows = table.row(list_of_keys)

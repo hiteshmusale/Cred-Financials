@@ -4,6 +4,8 @@ from pyhocon import ConfigFactory
 from kafka_consumer import get_df_from_kafka
 from happybase import Connection
 
+from my_happy_base import look_up_hbase
+
 
 def get_spark_session(spark_conf):
     application_name = spark_conf['application_name']
@@ -29,13 +31,16 @@ def get_happybase_connection(hbase_conf):
 if __name__ == '__main__':
     conf = ConfigFactory.parse_file('application.conf')
 
-    spark_conf = conf['spark']
-    spark, sc = get_spark_session(spark_conf=spark_conf)
+    # spark_conf = conf['spark']
+    # spark, sc = get_spark_session(spark_conf=spark_conf)
 
-    kafka_conf = conf['kafka']
-    df = get_df_from_kafka(spark=spark, kafka_conf=kafka_conf)
+    # kafka_conf = conf['kafka']
+    # df = get_df_from_kafka(spark=spark, kafka_conf=kafka_conf)
 
     hbase_conf = conf['hbase']
     hbase_connection = get_happybase_connection(hbase_conf=hbase_conf)
 
-    sc.broadcast(hbase_connection)
+    # sc.broadcast(hbase_connection)
+
+    rows = look_up_hbase(hbase_connection, hbase_conf, ['lookup key1','lookup key2'])
+    print(rows)
