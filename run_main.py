@@ -40,9 +40,10 @@ if __name__ == '__main__':
     # schema = read_schema('schema.json')
     # parsed_df = get_df_from_schema(kafka_df, schema)
 
-    query = print_df_on_console(kafka_df)
-
-    query.start()
+    kafka_df.writeStream.outputMode("append").format("console").start()
+    # query = print_df_on_console(kafka_df)
+    #
+    # query.start()
     #
     # hbase_connection = dao.HBaseDao()
     #
