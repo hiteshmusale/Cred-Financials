@@ -30,8 +30,12 @@ if __name__ == '__main__':
     # spark_conf = conf['spark']
     spark, sc = get_spark_session()
 
+    print("Created spark session")
+
     # kafka_conf = conf['kafka']
     kafka_df = get_df_from_kafka(spark=spark)
+
+    print("connected to kafka")
 
     # schema = read_schema('schema.json')
     # parsed_df = get_df_from_schema(kafka_df, schema)
