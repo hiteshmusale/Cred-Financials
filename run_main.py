@@ -38,7 +38,7 @@ if __name__ == '__main__':
     # kafka_conf = conf['kafka']
     # df = get_df_from_kafka(spark=spark, kafka_conf=kafka_conf)
 
-    hbase_connection = dao.HBaseDao
+    hbase_connection = dao.HBaseDao()
 
     rows = hbase_connection.get_data(key=b'6544649161377464', table='lookup')
     for r in rows:
