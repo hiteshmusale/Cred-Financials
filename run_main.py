@@ -39,7 +39,7 @@ if __name__ == '__main__':
     hbase_connection = dao.HBaseDao()
 
     rows = hbase_connection.get_data(key=b'6544649161377464', table='lookup')
-    print(rows)
+    print(rows[b'bt:score'])
 
     # sc.broadcast(hbase_connection)
 
