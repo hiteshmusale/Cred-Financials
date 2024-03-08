@@ -6,13 +6,13 @@ from pyspark.sql.types import StructType
 
 def get_df_from_kafka(spark, kafka_conf=None):
     bootstrap_server = '18.211.252.152:9092'
-    topic = "ransactions-topic-verified"
+    topic = "transactions-topic-verified"
 
     df = (
         spark.readStream.format("kafka")
         .option("kafka.bootstrap.servers", bootstrap_server)
         .option("subscribe", topic)
-        .option("startingOffsets", "latest")
+        .option("startingOffsets", "earliest")
         .load()
     )
 

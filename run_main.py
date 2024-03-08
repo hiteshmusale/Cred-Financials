@@ -33,10 +33,10 @@ if __name__ == '__main__':
     # kafka_conf = conf['kafka']
     kafka_df = get_df_from_kafka(spark=spark)
 
-    schema = read_schema('schema.json')
-    parsed_df = get_df_from_schema(kafka_df, schema)
+    # schema = read_schema('schema.json')
+    # parsed_df = get_df_from_schema(kafka_df, schema)
 
-    query = print_df_on_console(parsed_df)
+    query = print_df_on_console(kafka_df)
 
     query.start()
 
