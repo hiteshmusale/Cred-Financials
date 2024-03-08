@@ -1,6 +1,7 @@
 from pyspark.sql import SparkSession
 from pyhocon import ConfigFactory
 
+import dao
 from kafka_consumer import get_df_from_kafka
 from happybase import Connection
 
@@ -37,10 +38,10 @@ if __name__ == '__main__':
     # kafka_conf = conf['kafka']
     # df = get_df_from_kafka(spark=spark, kafka_conf=kafka_conf)
 
-    hbase_conf = conf['hbase']
-    hbase_connection = get_happybase_connection(hbase_conf=hbase_conf)
+    hbase_connection = dao.HBaseDao
+
+    hbase_connection.get_data(b'6544649161377464', 'lookup')
 
     # sc.broadcast(hbase_connection)
 
-    rows = look_up_hbase(hbase_connection, hbase_conf, ['lookup key1','lookup key2'])
-    print(rows)
+
