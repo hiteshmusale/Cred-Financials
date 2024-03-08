@@ -40,7 +40,9 @@ if __name__ == '__main__':
 
     hbase_connection = dao.HBaseDao
 
-    hbase_connection.get_data(b'6544649161377464', 'lookup')
+    rows = hbase_connection.get_data(key=b'6544649161377464', table='lookup')
+    for r in rows:
+        print(r)
 
     # sc.broadcast(hbase_connection)
 
