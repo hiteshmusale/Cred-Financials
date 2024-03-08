@@ -2,10 +2,8 @@ from pyspark.sql import SparkSession
 from pyhocon import ConfigFactory
 
 import dao
-from kafka_consumer import get_df_from_kafka
 from happybase import Connection
 
-from my_happy_base import look_up_hbase
 
 
 def get_spark_session(spark_conf):
