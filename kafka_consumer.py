@@ -4,9 +4,9 @@ from pyspark.sql.functions import from_json
 from pyspark.sql.types import StructType
 
 
-def get_df_from_kafka(spark, kafka_conf):
-    bootstrap_server = kafka_conf['bootstrap_server']
-    topic = kafka_conf['topic']
+def get_df_from_kafka(spark, kafka_conf=None):
+    bootstrap_server = '18.211.252.152:9092'
+    topic = "ransactions-topic-verified"
 
     df = (
         spark.readStream.format("kafka")
