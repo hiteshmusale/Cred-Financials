@@ -8,6 +8,9 @@ def get_df_from_kafka(spark, kafka_conf=None):
     bootstrap_server = '18.211.252.152:9092'
     topic = "transactions-topic-verified"
 
+    print("connecting to bootstrapserver " + bootstrap_server)
+    print("topic subscribing " + topic)
+
     df = (
         spark.readStream.format("kafka")
         .option("kafka.bootstrap.servers", bootstrap_server)

@@ -1,0 +1,31 @@
+docker exec -it broker bash
+
+kafka-topics --create --topic sampletopic --bootstrap-server broker:9092
+
+cat > samplemessages.txt
+{"card_id": 348684315090901,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090902,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090903,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090904,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090905,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090906,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090907,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090908,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090909,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090910,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090911,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090912,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090913,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090914,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090915,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090916,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090917,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090918,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+{"card_id": 348684315090919,"member_id": 293516519272933,"amount": 5346334,"postcode": 25943,"pos_id": 426254763798779,"transaction_dt": "19-03-2018 06:16:37"}
+
+kafka-console-producer --topic sampletopic --bootstrap-server broker:9092 < samplemessages.txt
+
+kafka-console-consumer --topic sampletopic --bootstrap-server broker:9092 --from-beginning
+
+
+./bin/spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 test.py
